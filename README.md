@@ -4,27 +4,25 @@
 
 ## 執行步驟:
 
-1. Start the ganache-cli in the following directory
+1. 啟動 ganache-cli 建立以太坊私有鏈。
 
-	/mykyc/node_modules/.bin/ganache-cli
-
-2. Open remix GUI in any browser :
+2. 在瀏覽器中開啟 remix GUI :
 	
 http://remix.ethereum.org/
 
-3. Paste the code from file KYCSmartContract.sol in remix file.(choose compiler version 0.4.24+)
+3. 複製 KYCSmartContract.sol 檔案到 remix 中。(編譯器版本請選擇 0.4.24+)
 
-4. In run tab choose web3js environment in the default localhost port 8545 and then click deploy.
+4. 執行環境選擇 web3js，也就是 ganache 所在的localhost 8545 port，並把合約部署到私有鏈上。
 
-5. Copy the address from the deployed contract and replace it in the MyContract.js file's getAddress() function
+5. 複製部署好的合約地址到 MyContract.js檔案中的 getAddress() function
 
-6. Open new terminal go to mykyc/public/ directory.
+6. 開啟新的終端器，接著進入 mykyc/public/ 路徑.
 
-7. Type the following command :
+7. 輸入以下指令 :
 	
 node server
 
-8. Open new tab in browser go to :
+8. 在瀏覽器中輸入以下網址 :
 	
 http://localhost:3000/
 
