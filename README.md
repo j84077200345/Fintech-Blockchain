@@ -1,28 +1,8 @@
-# KYC Process using Blockchain Technology and WebDev
-[![contributors](https://img.shields.io/github/contributors/97balakrishnan/KYCBlockchain.svg)](https://img.shields.io/github/contributors/97balakrishnan/KYCBlockchain.svg)
-[![last-commit](https://img.shields.io/github/last-commit/97balakrishnan/KYCBlockchain.svg)](https://img.shields.io/github/last-commit/97balakrishnan/KYCBlockchain.svg)
-<br>
+# 華南KYC房貸區塊鏈解決方案
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source-150x25.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-## Implementation stack:
-
-1. Smart Contract - Ethereum smart contracts in Solidity
-	- Remix GUI used for compiling and deploying the smart contract locally
-	- Web3Js for communicating with smart contract
-	- Ganache cli for creating test ethereum accounts 
-
-2. Middleware - NodeJS with add-on libraries including cryptoJS for hashing  
-                          Signatures and lzutf for compression
-
-3. Frontend      - HTML/CSS 
-
-
-
-
-The main project directory is  mykyc directory
-
-## Execution instructions:
+## 執行步驟:
 
 1. Start the ganache-cli in the following directory
 
