@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>圖像比對</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/pricing/">
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b610155e51.js" crossorigin="anonymous"></script>
+
+    <script src="MyContract.js"></script>
+    <script src="image_check.js"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      html {
+        font-size: 14px;
+      }
+
+      body {
+        font-family: 'Noto Sans TC', sans-serif;
+      }
+
+      @media (min-width: 768px) {
+        html {
+                font-size: 16px;
+        }
+      }
+
+      .container {
+        max-width: 960px;
+      }
+
+      .pricing-header {
+        max-width: 700px;
+      }
+
+      .card-deck .card {
+        min-width: 220px;
+      }
+    </style>
+  </head>
+  <body>
+        <script>
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+        
+                        reader.onload = function (e) {
+                            $('#uidpic')
+                                .attr('src', e.target.result);
+                            console.log(e.target.result);
+                            
+                        };
+                        window.localStorage.setItem('new_uid', input.files[0].name);
+                        document.getElementById('uid_new').value = input.files[0].name;
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+        </script>
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal"><i class="fas fa-house-damage"></i>&nbsp;房貸對保</h5>
+</div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="animated infinite tada delay-2s"><i class="far fa-images"></i>&nbsp;影本圖像比對</h1>
+  <p class="lead">使用「差值雜湊演算法(dHash)」對客戶申請房貸時上傳的身分證影本與對保時攜帶的正本進行相似度比對，大大減少了對保人審查正影本的時間</p>
+</div>
+<form action="/check_result" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
+    <div class="form-group">
+            <div class="container text-center">
+                    <div class="card-deck mb-3">
+                      <div class="card mb-6 shadow-sm">
+                        <div class="card-header">
+                          <h4 class="my-0 font-weight-normal">申請的影本</h4>
+                        </div>
+                        <div id="copy" class="card-body">
+                          
+                        </div>
+                      </div>
+                      <div class="card mb-6 shadow-sm">
+                        <div class="card-header">
+                          <h4 class="my-0 font-weight-normal">掃描的正本</h4>
+                        </div>
+                        <div class="card-body">
+                              <input type="file" onchange="readURL(this);" class="form-control-file" id="uid" name="uid">
+                              <img style="margin-top: 10px; height: 250px; width: 100%;" id="uidpic" src="https://dummyimage.com/300x250/bab8ba/ffffff.jpg&text=%E6%AD%A3%E6%9C%AC%E6%8E%83%E6%8F%8F.jpg" alt="your image">
+                        </div>
+                      </div>
+                    </div>
+                    <input type="hidden" id="uid_copy" name="uid_copy">
+                    <input type="hidden" id="uid_new" name="uid_new">
+                    <button type="submit" style="width: 50%;" class="btn btn-lg btn-outline-info"><i class="fas fa-check-double"></i>&nbsp;進行比對</button>
+                    <hr/>
+                  
+            </div>
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>House</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script src="MyContract.js"></script>
+    <script src="house.js"></script>
+
+    <style>
+      body {
+        font-family: 'Noto Sans TC', sans-serif
+      }
+
+      .container {
+          max-width: 960px;
+      }
+
+      .lh-condensed { 
+          line-height: 1.25;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+  </head>
+  <body class="bg-light">
+    <div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://img.pngio.com/cartoon-house-png-transparent-background-image-download-png-cartoon-house-png-900_900.png" alt="" width="120" height="120">
+    <h2>申請房貸所需文件</h2>
+    <p class="lead">如身分證影本、戶口名簿或戶籍謄本影本、所得證明等等，這些資料將提供給銀行作為房貸估價和審核時的參考文件</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3 text-center">文件上傳</h4>
+      <form action="/home_submit" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">客戶名稱</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="" value="Jack Huang" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">身分證字號</label>
+            <input type="text" class="form-control" id="uid" name="uid" placeholder="" value="G123456789" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="uidbackup">身分證和薪資證明影本</label>
+            <input type="file" onchange="readURL(this);" class="form-control-file" id="uidbackup" name="uidbackup" multiple>
+            <input type="hidden" id="uid_name" name="uid_name">
+            <input type="hidden" id="revenue_name" name="revenue_name">
+            <div class="text-center">
+                <img style="margin-top: 10px; height: 250px; width: 300px;" id="uidpic" src="https://dummyimage.com/300x250/39c4af/fff.jpg&text=%E8%AD%89%E6%98%8E%E5%BD%B1%E6%9C%AC%E4%B8%80" alt="your image">
+                <img style="margin-top: 10px; height: 250px; width: 300px;" id="revenuepic" src="https://dummyimage.com/300x250/39c4af/fff.jpg&text=%E8%AD%89%E6%98%8E%E5%BD%B1%E6%9C%AC%E4%BA%8C" alt="your image">
+            </div>
+        </div>
+
+        <hr class="mb-4">
+<!-- 
+        <div class="form-group">
+            <label for="revenuebackup"">所得證明</label>
+            <input type="file" onchange="readURL2(this)" class="form-control-file" id="revenuebackup" name="revenuebackup">
+            <img style="margin-top: 10px; height: 250px; width: 300px;" id="revenuepic" src="http://placehold.it/180" alt="your image">
+        </div> -->
+
+        <button style="margin-bottom: 1rem;" class="btn btn-danger btn-lg btn-block" type="submit" id="submit">申請</button>
+
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[1]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#uidpic')
+                            .attr('src', e.target.result);
+                        console.log(e.target.result);
+                        
+                    };
+                    window.localStorage.setItem('uid_backup', input.files[1].name);
+                    document.getElementById('uid_name').value = input.files[1].name;
+                    reader.readAsDataURL(input.files[1]);
+                }
+                setTimeout(function(){
+                  if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#revenuepic')
+                            .attr('src', e.target.result);
+                            console.log(e.target.result);
+                    };
+
+                    window.localStorage.setItem('revenue_backup', input.files[0].name)
+                    document.getElementById('revenue_name').value = input.files[0].name;
+                    reader.readAsDataURL(input.files[0]);
+                  }
+                }, 100);
+            }
+        </script>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+</body>
+</html>

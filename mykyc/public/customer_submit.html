@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>KYC表單</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="MyContract.js"></script>
+  <script src="customer_submit.js"></script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="customer_submit.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://cdn.shopify.com/s/files/1/0099/9562/files/Header-Icon-User.png?14597416339728210630" alt="" width="96" height="96">
+    <h2>您好</h2>
+    <p id="address"></p>
+    <p class="lead">KYC (Know Your Customer)是銀行非常重要的一項程序，除了法規上的遵循外，也同時要滿足控制投資風險和防制洗錢的目的，但各銀行重複花費大量金錢和時間成本在相同客戶KYC資料的收集和驗證上</p>
+  </div>
+
+  <div class="row ">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3 text-center">瞭解客戶(Know Your Customer)資料表</h4>
+      
+      <form action="/kyc_data" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
+        <input type="hidden" id="ethereum_address" name="ethereum_address">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="name">客戶名稱(個人或公司)</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Jack Huang" value="Jack Huang" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="passport"">護照號碼</label>
+            <input type="text" class="form-control" id="passport" name="passport" placeholder="123456789" value="123456789" required>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">身分證影本</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+
+        <div class="mb-3">
+          <label for="phone"">電話</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">+886</span>
+            </div>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="0975255471" value="0975255471" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">信箱 <span class="text-muted">(可選)</span></label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="xxx@example.com" value="j84077200345@gmail.com">
+        </div>
+
+        <div class="mb-3">
+          <label for="address">戶籍地址</label>
+          <input type="text" class="form-control" id="address" name="address" placeholder="台北市中山區林森北路312號" value="台北市中山區林森北路312號" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="revenue">個人年收入</label>
+            <select class="custom-select d-block w-100" id="revenue" name="revenue" required>
+              <option value="">選擇...</option>
+              <option value="台幣45萬元以下" selected>台幣45萬元以下</option>
+              <option value="台幣45萬元至台幣95萬元">台幣45萬元至台幣95萬元</option>
+              <option value="台幣95萬元以上">台幣95萬元以上</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="debit">個人負債</label>
+            <select class="custom-select d-block w-100" id="debit" name="debit" required>
+              <option value="">選擇...</option>
+              <option value="沒有負債" selected>沒有負債</option>
+              <option value="台幣45萬元以下">台幣45萬元以下</option>
+              <option value="台幣45萬元至台幣95萬元">台幣45萬元至台幣95萬元</option>
+              <option value="台幣95萬元至台幣300萬元">台幣95萬元至台幣300萬元</option>
+              <option value="台幣300萬元以上">台幣300萬元以上</option>
+            </select>
+          </div>
+        </div>
+        <hr class="mb-4">
+
+        <h4 class="mb-3">投資經歷</h4>
+
+        <div id="group1" class="d-block my-3">
+            <div class="custom-control custom-radio">
+                <input id="new" name="group1" value="新客戶" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="new">新客戶</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input id="one" name="group1" value="1年以下" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="one">1年以下</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input id="two" name="group1" value="1年至2年" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="two">1年至2年</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input id="three" name="group1" value="2年至5年" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="three">2年至5年</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input id="four" name="group1" value="5年以上" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="four">5年以上</label>
+            </div>
+        </div>
+
+        <hr class="mb-4">
+
+        <h4 class="mb-3">交易頻率</h4>
+
+        <div id="group2" class="d-block my-3">
+            <div class="custom-control custom-radio">
+                <input id="day" name="group2" value="每日" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="day">每日</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input id="week" name="group2" value="每周" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="week">每周</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input id="season" name="group2" value="每季" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="season">每季</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input id="not" name="group2" type="radio" value="不定" class="custom-control-input" required>
+                <label class="custom-control-label" for="not">不定</label>
+            </div>
+        </div>
+
+        <hr class="mb-4">
+        <h4 class="mb-3">投資商品</h4>
+
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="foreign" name="foreign" value="foreign">
+          <label class="custom-control-label" for="foreign">外幣</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="stock" name="stock" value="stock">
+          <label class="custom-control-label" for="stock">股票</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="bond" name="bond" value="bond">
+            <label class="custom-control-label" for="bond">債券</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="fund" name="fund" value="fund">
+            <label class="custom-control-label" for="fund">基金</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="structured" name="structured" value="structured" checked>
+            <label class="custom-control-label" for="structured">連動債</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="combine" name="combine" value="combine" checked>
+            <label class="custom-control-label" for="combine">組合式投資商品</label>
+        </div>
+
+        <hr class="mb-4">
+        <h4 class="mb-3">您認為投資結果中最重要的</h4>
+        
+        <div id="group3" class="d-block my-3">
+                <div class="custom-control custom-radio">
+                    <input id="low" name="group3" value="無論如何保住本金" type="radio" class="custom-control-input" checked required>
+                    <label class="custom-control-label" for="low">無論如何保住本金</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="medium" name="group3" value="風險高或風險低的產品都可接受" type="radio" class="custom-control-input" required>
+                    <label class="custom-control-label" for="medium">風險高或風險低的產品都可接受</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="high" name="group3" value="可以快速累積財富" type="radio" class="custom-control-input" required>
+                    <label class="custom-control-label" for="high">可以快速累積財富</label>
+                </div>
+        </div>
+
+        <hr class="mb-4">
+        <button style="margin-bottom: 1rem;" class="btn btn-primary btn-lg btn-block" type="submit" id="submit" onclick="return submitData()">提交表單</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>

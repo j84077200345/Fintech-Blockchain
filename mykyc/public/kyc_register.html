@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>KYC審查</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/floating-labels/">
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+	<!-- cryptoJS -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="MyContract.js"></script>
+	<script src="kyc_register.js"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+	  }
+	  
+	  body {
+		font-family: 'Noto Sans TC', sans-serif;
+	  }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="floating-labels.css" rel="stylesheet">
+  </head>
+  <body>
+    <form class="form-signin">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-kofYgnOAFYZ7IBQ4ONgOokPaMOeFGp2bhitjY5wtfu0cggJ3qA&s" alt="" width="100" height="100">
+    <h1 class="h3 mb-3 font-weight-normal">輸入審核資料</h1>
+  </div>
+
+  <div class="form-label-group">
+    <input type="text"" id="name" class="form-control" placeholder="客戶名稱" value="Jack Huang" required autofocus>
+    <label for="name"">客戶名稱</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="text" id="address" class="form-control" placeholder="地址" value="台北市中山區林森北路312號" required>
+    <label for="address">地址</label>
+  </div>
+
+  <div class="form-label-group">
+	<input type="text" id="debit" class="form-control" placeholder="負債情形" value="0" required>
+	<label for="debit"">負債情形</label>
+  </div>
+
+  <div class="form-label-group">
+	<input type="email" id="email" class="form-control" placeholder="信箱" value="j84077200345@gmail.com" required>
+	<label for="email">信箱</label>
+  </div>
+
+  <div class="form-label-group">
+	<input type="text" id="ethereum_address" class="form-control" placeholder="以太坊地址" value="0xF4E69F9cC45bF42ad9cA67aCDF8D46aAa0507942" required>
+	<label for="ethereum_address">以太坊地址</label>
+  </div>
+
+  <div class="form-label-group">
+	<input type="text" id="passport" class="form-control" placeholder="護照" value="123456789" required>
+	<label for="passport"">護照</label>
+  </div>
+
+  <div class="form-label-group">
+	<input type="text" id="revenue" class="form-control" placeholder="年收入" value="50000" required>
+	<label for="revenue"">年收入</label>
+  </div>
+
+  <div class="form-label-group">
+	<input type="text" id="phone"" class="form-control" placeholder="電話" value="0975255471" required>
+	<label for="phone">電話</label>
+  </div>
+
+  <button class="btn btn-lg btn-primary btn-block" type="button" onclick="submitData()">上鏈</button>
+  <p class="mt-5 mb-3 text-muted text-center">&copy; DEC.</p>
+</form>
+</body>
+</html>
