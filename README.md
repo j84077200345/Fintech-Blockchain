@@ -18,8 +18,9 @@ http://remix.ethereum.org/
 
 6. 開啟新的終端器，接著進入 mykyc/public/ 路徑.
 
-7. 輸入以下指令 :
-	
+7. 輸入以下兩個指令 :
+
+npm install
 node server
 
 8. 在瀏覽器中輸入以下網址 :
