@@ -21,6 +21,7 @@ http://remix.ethereum.org/
 7. 輸入以下兩個指令 :
 
 npm install
+
 node server
 
 8. 在瀏覽器中輸入以下網址 :
